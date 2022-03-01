@@ -9,17 +9,14 @@
  */
 
 
-/**
- * [Se almacenan los métodos de framework de EXPRESS en la const `express`]
- * 
- * @param express [modulo de express]
- * @param morgan  [Servidor de morgal] revisar est por favor
- * @param app     [ejecutara los métodos de express]
- */
 const express = require('express')
 const morgan = require('morgan')
+
+
+/**
+ * [almacena toda la configuración de la app]
+ */
 const app = express()
-const path = require('path')
 
 
 /**
@@ -55,6 +52,7 @@ app.use(express.json())
  */
 app.use(express.static("./public/img"));
 
+const portDefault = 8080
 
 /**
  * [SETTINGS - configuraciones globales] 
@@ -62,7 +60,6 @@ app.use(express.static("./public/img"));
  *@param port [Se válida que no exista un puerto pre definido por un servidor externo
                la aplicación iniciara en el puerto 8080]
  */
-const portDefault = 8080
 app.set('port', process.env.PORT || portDefault)
 
 
@@ -72,6 +69,12 @@ app.set('port', process.env.PORT || portDefault)
  *           que desea concatener]
  */
 app.use('/', require('./app/routes/routes'))
+
+
+/**
+ *  [Se usa para almacenar la direcciones de las vistas]
+ */
+ const path = require('path')
 
 
 /**
@@ -92,5 +95,6 @@ app.set('view engine', 'ejs')
 app.listen(app.get('port'), () => {
     console.log("App is online on port ", app.get('port'))
 });
+
 
 initDb()

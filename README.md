@@ -6,32 +6,31 @@
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://github.com/ing-italog?tab=repositories)
 
-Esta  aplicación da solución al taller de API-REST con NodeJs-Express Framework.
+This apliccation is the soluction to exercise 1 week 4, APIREST- dices game
 - Proyect Version  1.0.0 - 2022-02-21
 - Npm version 16.10.2
-- Express version 4.17.3
 - Text File Encoding UTF-8
+- Express 4.17.3
 - DB mongo
 - Morgan  1.10.0
 - Nodemon 2.0.15
 - mongoose
+- mongoose-delete 0.5.4
 - ejs  3.1.6
 
 ### Execute.
 
 Ejecutar el servidor con el siguiente comando en la consola `npm DEBUG`, el servidor inicia por defecto en el puerto 8080.
 
-Para ejecutar en un servidor final se ejecuta con el comando `npm run start` la cual deja a disposición del hosting la asignación del puerto, en caso de no asignarse un puerto este se asignara por defecto en el puerto 3000.
+Para ejecutar en un servidor final se ejecuta con el comando `npm run start` la cual deja a disposición del hosting la asignación del puerto, en caso de no asignarse un puerto este se asignara por defecto en el puerto 8080.
 
 La ruta raiz para usar la api en local es : `http://:localhost:defaultPort/api/game`, en caso de modificar el número del puerto, esta ruta cambiara su número.
 
 ### Packages
 
-`package.json` y `packge-lock.json` con tiene las depedencias de las cuales hace uso el protecto
-
 El documeto `server.js` el cual es tiene las configuraciones del servidor (puerto, servidor, framework, etc).
 
-- [app] - Contiene los paquetes `Routers`, `Controllers`, `Models`.
+- [app] - Contiene los paquetes `routes`, `controller`, `models` y `views`.
 
 - [config] - Contiene el documento `db.js`, en este documento se hallan las configuraciones de conexión a la base de datos.
 
@@ -39,7 +38,7 @@ El documeto `server.js` el cual es tiene las configuraciones del servidor (puert
 
 ### Subpackages
 
-- [Routers]() - Contiene el documento `router.js` el cual contiene las rutas con las cuales se puede acceder a la API, por cada ruta se ejecuta una función asignada desde el `controller.js`, la ruta raiz en local por defecto es `http://:localhost:3000/` más la ruta correspondiente, en caso de modificar el número del puerto, esta ruta cambiar el número.
+- [Routers]() - Contiene el documento `routes.js` el cual contiene las rutas con las cuales se puede acceder a la API, por cada ruta se ejecuta una función asignada desde el `controller.js`, la ruta raiz en local por defecto es `http://:localhost:8080/` más la ruta correspondiente, en caso de modificar el número del puerto, esta ruta cambiar el número.
 
 - [Controllers]()  - Contiene el documento `controller.js` el cual es el encargado de comunicarse con la base de datos y dar las respuestas a las solicitudes del cliente.
 
@@ -88,5 +87,6 @@ GET `api/ + id /winner` Define el ganador de una partida, se debe enviar el ID d
 ```
 http://localhost:defaultPort/api/ + id /winner
 ```
+
 
 @Author [Italo Alberto Guevara Villamil - alberto.villamil.1997@gmail.com]

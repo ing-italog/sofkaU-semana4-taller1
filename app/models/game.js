@@ -1,11 +1,10 @@
 /**
- * [Este documento contiene los modelos necesarios para la creación del juego, como el
- *  objeto 'player' y la clase 'Game']
+ * [Este documento contiene el modelo necesario para la creación del juego el schema 'Game']
  * 
  * @author [italo alberto guevara villamil - alberto.villamil.1997@gmail.com]
  * 
  * @version 1.0.0
- * @since [2022-21-02]
+ * @since [2022-28-02]
  */
 
 
@@ -24,8 +23,7 @@ const GameScheme = new mongoose.Schema(
     {
         gamers: [
             {
-                name:
-                {
+                name: {
                     type: String,
                     trim: true,
                     required: [true, 'Name is required.']
@@ -36,16 +34,11 @@ const GameScheme = new mongoose.Schema(
                 }
             }
         ],
-
         inProgress: { type: Boolean, default: false },
         winner: [],
-        createDate: { type: Date, default: Date.now },
-        
+        createDate: { type: Date, default: Date.now }
     },
-    {
-        versionKey: false,
-        timeStamps: true
-    }
+    { timeStamps: true }
 )
 
 GameScheme.plugin(mongooseSoftDelete)

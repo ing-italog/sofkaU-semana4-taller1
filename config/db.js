@@ -8,11 +8,6 @@
  */
 
 const mongoose = require('mongoose')
-
-
-/**
- * [Constante que contiene la uri a la base de datos]
- */
 const DB_URI = `mongodb://localhost/my_app_node`
 
 

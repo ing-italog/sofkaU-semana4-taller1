@@ -10,20 +10,8 @@
  */
 
 
-/**
- * [Se asigna el framework de express en una constate, para posterior usar
- *  esa contantes y llamar su método router]
- * 
- * @param Router [framework express]
- * @param router  [almacena las rutas]
- */
 const { Router } = require('express');
 const router = Router();
-
-
-/**
- * [En esta constante de guardan las funciones del archivo 'controller.js']
- */
 const _ctrl = require('../controller/controller.js');
 const URL = '/api'
 
@@ -33,10 +21,12 @@ const URL = '/api'
  */
 router.get('/', _ctrl.getIndex)
 
+
 /**
 * [Ruta /api GET, devuelve un JSON con el historico de todas las partidas]
 */
 router.get(`${URL}`, _ctrl.getGames)
+
 
 /**
  * [Ruta: /api/:id GET, devuelve un JSON con la información de una partida, se requiere el 'id' de la partida]

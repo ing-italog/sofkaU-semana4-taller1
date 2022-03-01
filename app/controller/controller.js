@@ -8,10 +8,6 @@
  * @since [2022-28-02]
  */
 
-
-/**
- * [Se importan los objetos del documento 'models.js', la cual contiene el objeto game]
- */
 const Game = require('../models/game');
 
 
@@ -19,7 +15,7 @@ const Game = require('../models/game');
  * [Devuelve un documento html que contiene las instrucciones acerca de como usar la api]
  */
 exports.getIndex = (req, res) => {
-    res.render('index.html', { title: 'DICES GAME' });
+    res.render('index.html', { title: 'API-DICES GAME' });
 }
 
 
@@ -42,14 +38,15 @@ exports.getGames = (req, res) => {
         if (result.length != 0) {
             res.json(result)
         } else {
-            res.json({ "message": "They are no one data" })
+            res.json({ message: 'They are no one data' })
         }
     }).catch(err => console.error(err))
 }
 
 
 /**
- *[Devuelve el estado de una partida, la busqueda se realiza por el 'id' de la partida]
+ *[Devuelve un JSON con la información de una partida, la busqueda se realiza 
+ * por el 'id' de la partida]
  *
  * @throws [Cuando exista un error]
  */
@@ -57,12 +54,12 @@ exports.getGame = (req, res, next) => {
 
     Game.findById(req.params.id)
         .then((result) => { res.json(result) })
-        .catch((err) => { res.json(err) });
+        .catch((err) => { res.json({ message: 'Not founded id', err }) });
 }
 
 
 /**
- * [Registrar nueva partida]
+ * [Guarda una nueva partida en la DDBB]
  * 
  * @throws [Cuando exista un error]
  */
@@ -73,9 +70,13 @@ exports.createGame = (req, res) => {
 
     })
 
-    game.save()
+    if(game.gamers.length >= 2){
+        game.save()
         .then((result) => { res.status(210).json(result) })
         .catch((err) => { res.status(500).json(err) });
+    }else{
+        res.status(400).json({message: 'Gamers must get 2 or more gamers'})
+    }
 }
 
 
@@ -121,7 +122,7 @@ exports.getWinner = (req, res) => {
                 res.json({ inProgress: 'The game was finish' })
             }
         })
-        .catch((err) => { res.json(err) })
+        .catch((err) => { res.status(500).json({message:'Not founded id',err}) })
 }
 
 
@@ -142,14 +143,14 @@ exports.startGame = (req, res) => {
 
                 Game.findByIdAndUpdate(req.body.id, { inProgress: true })
                     .then((result) => { res.json({ inProgress: 'true' }) })
-                    .catch((err) => { res.status(500).json(err) })
+                    .catch((err) => { res.status(500).json(err)})
 
             } else if (result.inProgress == true) {
                 res.json({ inProgress: 'game in progress' })
 
             } else {
-                res.json({ inProgress: 'The game was finish' })
+                res.json({ message: 'The game was finish' })
             }
         })
-        .catch((err) => { res.status(500).json(err) })
+        .catch((err) => { res.status(500).json({message:'Not founded id',err}) })
 }
