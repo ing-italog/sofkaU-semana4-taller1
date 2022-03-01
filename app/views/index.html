@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>
+        GUIDE API - DICES GAME
+    </title>
+</head>
+
+<body class="bg-light">
+    <h1></h1>
+
+    <div class="container mt-5 px-5">
+
+        <!--Tittle-->
+        <div class="border">
+            <h1 class="m-3 text-primary"><b>GUIDE API - DICES GAME</b></h1>
+            <br>
+            <h5 class="m-3 text-secondary">Guiden on how to use the api.</h5>
+        </div>
+
+        <div class="border mt-5">
+            <h6 class="m-3 text-primary"><b>ROUTES</b></h6>
+            <p class="m-3">La ruta raiz es: http://localhost:defaultPort<b>/api</b></p>
+            <P class="mx-3 mt-4 text-primary">Peticiones GET</P>
+
+            <!--petition GET-->
+            <ul class="list-unstyled mx-4 ">
+                <li>
+                    <p><b>/</b> esta url mostrara el historial de partidas</p>
+                </li>
+                <li class="mt-5">
+                    <p><b>/ +id</b> esta ruta devuelve una pártida en especifico, <b class="text-danger">/id </b>en
+                        la cabecera debes incluir
+                        el id que se desea consultar</p>
+                        <img src="../game.JPG" class="img-fluid rounded mx-5">
+                </li>
+                <li class="mt-5">
+                    <p><b>/ +id /winner</b> se utiliza para definir el ganador de una pártida, el ganador se da de forma
+                        aleatoria, por lo que en la petición unicámente se debera poner el <b
+                            class="text-danger">/id</b> de la
+                        partida, más <b class="text-danger">/winner</b></p>
+                    <img src="../winner.JPG" class="img-fluid rounded mx-5">
+                </li>
+            </ul>
+
+            <!--petition POST-->
+            <P class="mx-3 mt-5 text-primary">Peticiones POST</P>
+            <ul class="list-unstyled mx-4">
+                <li>
+                    <p><b>/createGame</b> url para crear una pártida nueva, puedes usar la siguiente ilustración como
+                        guía para hacer la envíar los datos json
+                    <br>{ " gamers ":[ {" name ": " example1 ", " bet " : 12345} ]</p>
+                    <img src="../img1.JPG" class="img-fluid rounded mx-5">
+
+                </li>
+                <li class="mt-5">
+                    <p><b>/startGame</b> se debe enviar el <b class="text-danger">id</b> en el body de la petición, el
+                        ganador se
+                        se define de forma aleatoria.
+                        <br>{ " id ":{" id example "} } </p></p>
+                    <img src="../img2.PNG" class="img-fluid rounded mx-5">
+
+
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+
+    <!--Footer-->
+    <footer class="container mt-5">
+        <div class="row">
+            <div class="col-9">
+                <p>Designed by <b>Italo Alberto Guevara Villamil - alberto.guevara.villamil.1997@gmail.com</b></p>
+            </div>
+            <div class="col">
+                <p> powered by <a href="https://nodejs.org/es/" target="_blank">Nodejs</a> & <a
+                        href="https://www.mongodb.com/cloud/atlas/lp/try2?utm_content=controlhterms&utm_source=google&utm_campaign=gs_americas_colombia_search_core_brand_atlas_desktop&utm_term=mongo&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624317&adgroup=115749712463"
+                        target="_blank">Mongodb</a></p>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
