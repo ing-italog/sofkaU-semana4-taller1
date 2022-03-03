@@ -30,7 +30,8 @@ const GameScheme = new mongoose.Schema(
                 },
                 bet: {
                     type: Number,
-                    required: [true, 'The bet is required']
+                    required: [true, 'The bet is required'],
+                    min: 10
                 }
             }
         ],

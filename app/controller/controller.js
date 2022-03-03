@@ -4,8 +4,8 @@
  * 
  * @author [italo alberto guevara villamil - alberto.villamil.1997@gmail.com]
  * 
- * @version 1.0.0
- * @since [2022-28-02]
+ * @version 1.0.1
+ * @since [2022-03-02]
  */
 
 const Game = require('../models/game');
@@ -105,11 +105,10 @@ exports.getWinner = (req, res) => {
                 result.gamers.forEach(element => {
                     totalBet += element.bet
                 })
-                console.log(totalBet)
                 win = result.gamers[numRamdon]
                 win.bet = totalBet
 
-                Game.findByIdAndUpdate(req.body.id, { inProgress: false, winner: win })
+                Game.findByIdAndUpdate(req.params.id, { inProgress: false, winner: win })
                     .then(solve => Game.findById(req.params.id).then(solutin => res.json(solutin)))
 
             } else if ((result.inProgress == false) && (result.winner.length != 0)) {
